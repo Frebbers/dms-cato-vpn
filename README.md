@@ -10,8 +10,8 @@ DankMaterialShell bar widget for the Cato SDP client (`cato-sdp`).
 
 Clone the repo anywhere, then link (or copy) it into the DMS plugins directory:
 
-    git clone <repo-url> ~/projects/dms-cato-vpn
-    ln -s ~/projects/dms-cato-vpn ~/.config/dms/plugins/catoVpn   # or: cp -r
+    git clone https://github.com/Frebbers/dms-cato-vpn && cd dms-cato-vpn
+    ln -s . ~/.config/dms/plugins/catoVpn   # or: cp -r
     dms restart
     dms ipc call plugins enable catoVpn
 
