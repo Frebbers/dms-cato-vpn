@@ -1,0 +1,11 @@
+{
+    "id": "catoVpn",
+    "name": "Cato VPN",
+    "description": "Status, connect, disconnect and update for the Cato SDP client",
+    "version": "1.0.0",
+    "author": "Frederik Bode Hendrichsen",
+    "icon": "vpn_lock",
+    "type": "widget",
+    "component": "./CatoVpnWidget.qml",
+    "permissions": ["settings_read"]
+}
