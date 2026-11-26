@@ -71,9 +71,16 @@ PluginComponent {
 
     Process {
         id: statusProc
-        command: ["cato-sdp", "status"]
+        // timeout so a hung client can't block later polls
+        command: ["timeout", "8", "cato-sdp", "status"]
         stdout: StdioCollector {
             onStreamFinished: root.parseStatus(text)
+        }
+        onExited: exitCode => {
+            if (exitCode !== 0 && root.busy === "") {
+                root.info = ({});
+                root.vpnState = "unknown";
+            }
         }
     }
 
@@ -98,7 +105,7 @@ PluginComponent {
 
     Timer {
         interval: 5000
-        running: root.surfaceLive
+        running: true
         repeat: true
         triggeredOnStart: true
         onTriggered: root.refresh()
@@ -191,10 +198,11 @@ PluginComponent {
                     spacing: Theme.spacingS
 
                     DButton {
-                        text: root.connected ? "Reconnect" : "Connect"
-                        iconName: root.connected ? "refresh" : "power_settings_new"
+                        text: "Reconnect"
+                        iconName: "refresh"
+                        visible: !root.connected
                         enabled: root.busy === ""
-                        onClicked: root.connected ? root.reconnect() : root.connect()
+                        onClicked: root.reconnect()
                     }
 
                     DButton {

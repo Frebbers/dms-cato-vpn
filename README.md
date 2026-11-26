@@ -3,7 +3,7 @@
 DankMaterialShell bar widget for the Cato SDP client (`cato-sdp`).
 
 - Bar pill shows connection status (polls `cato-sdp status` every 5s)
-- Popout: PoP, tunnel IP, uptime, and Connect/Reconnect, Disconnect, Update buttons
+- Popout: PoP, tunnel IP, uptime, and Reconnect (only when disconnected), Disconnect, Update buttons
 - Update runs `cato-sdp update; cato-sdp start`, since updating drops the tunnel
 
 ## Install
